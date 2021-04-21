@@ -1,5 +1,7 @@
 package com.example.provesm7;
 
+import com.google.firebase.firestore.Blob;
+
 public class Artista {
     private String nom;
     private String cognom;
@@ -7,6 +9,7 @@ public class Artista {
     private String dataNaixement;
     private String dataMort;
     private String descripcio;
+    private Blob fotografia = Blob.fromBytes(new byte[]{});
 
     //Constructor Classe Artista
     public Artista(String nom, String cognom, String cognom2, String dataNaixement, String dataMort, String descripcio){
@@ -28,7 +31,6 @@ public class Artista {
     public String getCognom() {
         return cognom;
     }
-
     public void setCognom(String cognom) {
         this.cognom = cognom;
     }
@@ -57,4 +59,11 @@ public class Artista {
         this.dataMort = dataMort;
     }
 
+    public Blob getFotografia() {
+        return fotografia;
+    }
+
+    public void setFotografia(Blob fotografia) {
+        this.fotografia = fotografia;
+    }
 }
