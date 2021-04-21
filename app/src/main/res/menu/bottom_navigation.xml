@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/imgFundacio"
+        android:icon="@drawable/botonera_iconacoleccio"
+        android:title="Fundació"/>
+
+    <item
+        android:id="@+id/imgMapa"
+        android:icon="@drawable/botonera_iconamapa"
+        android:title="Mapa"/>
+
+    <item
+        android:id="@+id/imgEscultures"
+        android:icon="@drawable/botonera_iconaescultures"
+        android:title="Escultures"/>
+
+    <item
+        android:id="@+id/imgArtistes"
+        android:icon="@drawable/botonera_iconaartistes"
+        android:title="Artistes"/>
+</menu>
