@@ -3,6 +3,7 @@ package com.example.provesm7;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -37,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
                             selectedFragment = new ArtistaFragment();
                             break;
                         case R.id.imgMapa:
-                            selectedFragment = new MapaFragment();
+                            selectedFragment = new MapsActivity();
                             break;
                         case R.id.imgEscultures:
                             selectedFragment = new EsculturaFragment();
