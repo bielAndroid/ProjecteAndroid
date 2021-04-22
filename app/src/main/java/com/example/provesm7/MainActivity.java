@@ -36,6 +36,12 @@ public class MainActivity extends AppCompatActivity {
                         case R.id.imgArtistes:
                             selectedFragment = new ArtistaFragment();
                             break;
+                        case R.id.imgMapa:
+                            selectedFragment = new MapaFragment();
+                            break;
+                        case R.id.imgEscultures:
+                            selectedFragment = new EsculturaFragment();
+                            break;
                     }
 
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_layout,
@@ -44,6 +50,4 @@ public class MainActivity extends AppCompatActivity {
                     return true;
                 }
             };
-
-
 }
