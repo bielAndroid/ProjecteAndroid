@@ -10,6 +10,7 @@ public class Artista {
     private String dataMort;
     private String descripcio;
     private Blob fotografia = Blob.fromBytes(new byte[]{});
+    private Blob audio = Blob.fromBytes(new byte[]{});
 
     //Constructor Classe Artista
     public Artista(String nom, String cognom, String cognom2, String dataNaixement, String dataMort, String descripcio){
