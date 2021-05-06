@@ -2,16 +2,21 @@ package com.example.provesm7;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
+    private final int PERMISSIONS_REQUEST_POSITION = 100;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,6 +24,13 @@ public class MainActivity extends AppCompatActivity {
 
         BottomNavigationView btnNav = findViewById(R.id.bottom_navigation);
         btnNav.setOnNavigationItemSelectedListener(navListener);
+
+        requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, PERMISSIONS_REQUEST_POSITION);
+
+        if(ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
+                && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            Toast.makeText(this, "S'ha de donar permís per utilitzar la localització", Toast.LENGTH_LONG).show();
+        }
 
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_layout, new FundacioFragment()).commit();
 

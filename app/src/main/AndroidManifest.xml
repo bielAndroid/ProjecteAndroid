@@ -13,8 +13,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MaterialComponents.Light.NoActionBar">
-        <uses-library android:name="com.google.android.maps" />
-
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyB7oLCobSSKjtzAc3rwTGrLPuNEiAiF2h0"/>
