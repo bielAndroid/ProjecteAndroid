@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -33,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_layout, new FundacioFragment()).commit();
-
+        // Linea per afegir registres a la base de dades     startActivity(new Intent(this,DBActivity.class));
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =

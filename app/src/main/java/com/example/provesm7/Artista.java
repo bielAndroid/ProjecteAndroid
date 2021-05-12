@@ -12,13 +12,18 @@ public class Artista {
     private Blob fotografia = Blob.fromBytes(new byte[]{});
     private Blob audio = Blob.fromBytes(new byte[]{});
 
+    public Artista (){
+
+    }
     //Constructor Classe Artista
-    public Artista(String nom, String cognom, String cognom2, String dataNaixement, String dataMort, String descripcio){
+    public Artista(String nom, String cognom, String cognom2, String dataNaixement, String dataMort, Blob fotografia, Blob audio,String descripcio){
         this.nom = nom;
         this.cognom = cognom;
         this.cognom2 = cognom2;
         this.dataNaixement = dataNaixement;
         this.dataMort = dataMort;
+        this.fotografia = fotografia;
+        this.audio = audio;
         this.descripcio = descripcio;
     }
 
@@ -59,12 +64,14 @@ public class Artista {
     public void setDataMort(String dataMort){
         this.dataMort = dataMort;
     }
-
     public Blob getFotografia() {
         return fotografia;
     }
-
     public void setFotografia(Blob fotografia) {
         this.fotografia = fotografia;
+    }
+    public Blob getAudio(){return audio;}
+    public void setAudio(Blob audio) {
+        this.audio = audio;
     }
 }

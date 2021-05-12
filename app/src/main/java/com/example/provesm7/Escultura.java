@@ -9,11 +9,16 @@ public class Escultura {
     private Blob fotografia = Blob.fromBytes(new byte[]{});
     private Blob audio = Blob.fromBytes(new byte[]{});
 
+    public Escultura(){
+
+    }
     //Constructor
-    public Escultura(String nom, String descripcio, String dataCreacio){
+    public Escultura(String nom, String descripcio, String dataCreacio, Blob fotografia, Blob audio){
         this.nom = nom;
         this.descripcio = descripcio;
         this.dataCreacio = dataCreacio;
+        this.fotografia = fotografia;
+        this.audio = audio;
     }
     //Getters i setters.
     public String getNom(){
@@ -38,5 +43,21 @@ public class Escultura {
 
     public void setDataCreacio(String dataCreacio) {
         this.dataCreacio = dataCreacio;
+    }
+
+    public Blob getFotografia() {
+        return fotografia;
+    }
+
+    public void setFotografia(Blob fotografia) {
+        this.fotografia = fotografia;
+    }
+
+    public Blob getAudio() {
+        return audio;
+    }
+
+    public void setAudio(Blob audio) {
+        this.audio = audio;
     }
 }

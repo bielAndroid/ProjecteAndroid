@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,7 +20,7 @@ import java.util.ArrayList;
 
 public class EsculturaAdapter extends FirestoreRecyclerAdapter<Escultura, EsculturaAdapter.EsculturaHolder> {
 
-    public ArrayList<Escultura> esculturesRecycler;
+
     public static class EsculturaHolder extends RecyclerView.ViewHolder{
         public View element;
         public ImageView fotoEscultura;
@@ -35,16 +37,18 @@ public class EsculturaAdapter extends FirestoreRecyclerAdapter<Escultura, Escult
 
     @Override
     protected void onBindViewHolder(@NonNull EsculturaAdapter.EsculturaHolder holder, int position, @NonNull Escultura model) {
-        EsculturaAdapter.PersonalitzaVista(holder,model);
+        holder.nomEscultura.setText(model.getNom());
+        Bitmap bitmap = BitmapFactory.decodeByteArray(model.getFotografia().toBytes(), 0, model.getFotografia().toBytes().length);
+        holder.fotoEscultura.setImageBitmap(bitmap);
     }
 
     @NonNull
     @Override
     public EsculturaHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View vista = LayoutInflater.from(parent.getContext()).inflate(R.layout.escultura_fragment,parent,false);
-        return new EsculturaAdapter.EsculturaHolder(vista);
+        return new EsculturaHolder(vista);
     }
-    public static void PersonalitzaVista(EsculturaAdapter.EsculturaHolder holder, Escultura artista){
-        //holder
+    public String getKey(int pos){
+        return super.getSnapshots().getSnapshot(pos).getId();
     }
 }

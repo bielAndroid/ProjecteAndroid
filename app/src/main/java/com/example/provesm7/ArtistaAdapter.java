@@ -1,13 +1,9 @@
 package com.example.provesm7;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.os.Bundle;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Log;
 import android.view.LayoutInflater;
-
-
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -17,13 +13,12 @@ import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 
 
-import org.w3c.dom.Text;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
 
 public class ArtistaAdapter extends FirestoreRecyclerAdapter<Artista, ArtistaAdapter.ArtistaHolder> {
 
-    private ArrayList<Artista> artistesRecycler;
 
     public static class ArtistaHolder extends RecyclerView.ViewHolder{
         public View element;
@@ -43,21 +38,26 @@ public class ArtistaAdapter extends FirestoreRecyclerAdapter<Artista, ArtistaAda
     }
     @Override
     protected void onBindViewHolder(@NonNull ArtistaAdapter.ArtistaHolder holder, int position, @NonNull Artista model) {
-        ArtistaAdapter.PersonalitzaVista(holder,model);
+        if(holder.nomArtista == null){
+            Log.d("NULL","ES NULL");
+        }
+        else {
+            holder.nomArtista.setText(model.getNom());
+            holder.linksEscultures.setText("");
+            Bitmap bitmap = BitmapFactory.decodeByteArray(model.getFotografia().toBytes(), 0, model.getFotografia().toBytes().length);
+            holder.imatgeArtista.setImageBitmap(bitmap);
+        }
     }
 
     @NonNull
     @Override
-    public ArtistaAdapter.ArtistaHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ArtistaHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View vista = LayoutInflater.from(parent.getContext()).inflate(R.layout.artista_fragment,parent,false);
-        return new ArtistaAdapter.ArtistaHolder(vista);
+        return new ArtistaHolder(vista);
     }
     public String getKey(int pos){
         return super.getSnapshots().getSnapshot(pos).getId();
     }
 
-    public static void PersonalitzaVista(ArtistaAdapter.ArtistaHolder holder, Artista artista){
-        //holder
-    }
 
 }
