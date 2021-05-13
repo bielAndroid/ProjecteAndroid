@@ -36,38 +36,34 @@ public class DBActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
-                    int mida = (int) DBActivity.this.getAssets().openFd("cesar.png").getLength();
+                    int mida = (int) DBActivity.this.getAssets().openFd("onades.png").getLength();
                     byte[] buffer = new byte[mida];
 
-                    InputStream is = DBActivity.this.getAssets().open("cesar.png");
+                    InputStream is = DBActivity.this.getAssets().open("onades.png");
 
+
+                    int midaAudio = (int) DBActivity.this.getAssets().openFd("audiosisif.mp3").getLength();
+                    byte[] bufferAudio = new byte[midaAudio];
+
+                    InputStream isAudio = DBActivity.this.getAssets().open("audiosisif.mp3");
+                    isAudio.read(bufferAudio);
                     //Llegim el contingut i tanquem el buffer.
                     is.read(buffer);
                     is.close();
 
-                    Artista cesar = new Artista("Cèsar", "Montaña", "García", "1928", "2000", Blob.fromBytes(buffer), Blob.fromBytes(buffer), "Nascut a el 1928 a Vegadeo (Astúries)\n" +
-                            "Va estudiar a la Escuela Superior de Bellas\n" +
-                            "Artes de Madrid.\n" +
-                            "Posteriorment, va residir a Itàlia, des d’on, en\n" +
-                            "constant formació, va fer viatges d’estudis per\n" +
-                            "aquell país, Grècia, França, Bèlgica, Holanda,\n" +
-                            "Alemanya, Àustria i Anglaterra.\n" +
-                            "Va guanyar nombrosos premis i guardons i ha\n" +
-                            "fet exposicions, individuals i col·lectives arreu\n" +
-                            "del món.\n" +
-                            "A partir del 1960 passà a viure a Madrid, on\n" +
-                            "instal·là el seu taller, i on morí l’any 2000.\n" +
-                            "--------------------------------------------\n" +
-                            "És un escultor d’arrels classicitzants, però que\n" +
-                            "amb el pas del temps ha anat evolucionant, a\n" +
-                            "través de l’experimentació en materials,\n" +
-                            "formats i volums, cap a l’abstracció, desdibuixant les formes fins a fer-les de vegades\n" +
-                            "difícils de reconèixer-les.\n" +
-                            "Ha treballat principalment amb la pedra i el\n" +
-                            "metall, sobretot bronze.");
-                    db.collection("artistes").
-                            document("123").
-                            set(cesar).
+                    Escultura onades = new Escultura("Ballant amb les onades", "Material: Pedra d'Ulldecona\n" +
+                            "Alçada: 280 cm / Amplada 140 cm.\n" +
+                            "Pes: 7.500 kg.\n", "Any: 1975",Blob.fromBytes(buffer),Blob.fromBytes(bufferAudio));
+//                    Artista joan = new Artista("Joan", "Serafini", "Masdeu", "1931", "2017", Blob.fromBytes(buffer), Blob.fromBytes(buffer), "Nascut a Valls (l’Alt Camp) el 1931, prengué contacte amb l’escultura a les\n" +
+//                            "classes d’art de l’Escola del Treball de la seva vila natal; després d’uns primers anys de cursar dibuix, pintura i escultura amb professors locals, els\n" +
+//                            "primers aprenentatges en l’escultura li arribaren de les mans del mestre\n" +
+//                            "escultor Josep Busquets, al costat del qual treballà durant 7 anys en la restauració del retaule major de Sant Joan de Valls, època en què s’integrà en\n" +
+//                            "el grup Un nus, format per escultors de l’Alt Camp.\n" +
+//                            "Participà en nombroses exposicions, fins que l’any 1954 es traslladà a Barcelona, sempre sota l’empara del seu mestre, i completà la seva formació\n" +
+//                            "artística en el Cercle Artístic de Sant Lluc. Morí a Valls el 2017.");
+                    db.collection("escultures").
+                            document("133").
+                            set(onades).
                             addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void v) {

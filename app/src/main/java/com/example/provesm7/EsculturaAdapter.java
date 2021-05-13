@@ -21,10 +21,11 @@ import java.util.ArrayList;
 public class EsculturaAdapter extends FirestoreRecyclerAdapter<Escultura, EsculturaAdapter.EsculturaHolder> {
 
 
-    public static class EsculturaHolder extends RecyclerView.ViewHolder{
+    public class EsculturaHolder extends RecyclerView.ViewHolder{
         public View element;
         public ImageView fotoEscultura;
         public TextView nomEscultura;
+
         public EsculturaHolder(View itemView) {
             super(itemView);
             fotoEscultura = (ImageView) itemView.findViewById(R.id.imatgeEscultura);
@@ -45,7 +46,7 @@ public class EsculturaAdapter extends FirestoreRecyclerAdapter<Escultura, Escult
     @NonNull
     @Override
     public EsculturaHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View vista = LayoutInflater.from(parent.getContext()).inflate(R.layout.escultura_fragment,parent,false);
+        View vista = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_escultura_adapter,parent,false);
         return new EsculturaHolder(vista);
     }
     public String getKey(int pos){

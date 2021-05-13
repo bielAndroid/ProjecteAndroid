@@ -29,7 +29,7 @@ public class EsculturaFragment extends Fragment {
         rv = (RecyclerView) root.findViewById(R.id.rvEscultura);
         db = FirebaseFirestore.getInstance();
 
-        esculturesLayout = new GridLayoutManager(EsculturaFragment.this.getContext(),4);
+        esculturesLayout = new GridLayoutManager(EsculturaFragment.this.getContext(),2);
 
         rv.setLayoutManager(esculturesLayout);
 

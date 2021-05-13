@@ -20,7 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 public class ArtistaAdapter extends FirestoreRecyclerAdapter<Artista, ArtistaAdapter.ArtistaHolder> {
 
 
-    public static class ArtistaHolder extends RecyclerView.ViewHolder{
+    public class ArtistaHolder extends RecyclerView.ViewHolder{
         public View element;
         public ImageView imatgeArtista;
         public TextView nomArtista;
@@ -29,7 +29,7 @@ public class ArtistaAdapter extends FirestoreRecyclerAdapter<Artista, ArtistaAda
         public ArtistaHolder(View itemView){
             super (itemView);
             imatgeArtista = (ImageView) itemView.findViewById(R.id.imatgeArtista);
-            nomArtista = (TextView) itemView.findViewById(R.id.tvNom);
+            nomArtista = (TextView) itemView.findViewById(R.id.tvNomArtista);
             linksEscultures = (TextView) itemView.findViewById(R.id.tvLink);
         }
     }
@@ -43,7 +43,7 @@ public class ArtistaAdapter extends FirestoreRecyclerAdapter<Artista, ArtistaAda
         }
         else {
             holder.nomArtista.setText(model.getNom());
-            holder.linksEscultures.setText("");
+            holder.linksEscultures.setText("Sisif");
             Bitmap bitmap = BitmapFactory.decodeByteArray(model.getFotografia().toBytes(), 0, model.getFotografia().toBytes().length);
             holder.imatgeArtista.setImageBitmap(bitmap);
         }
@@ -52,12 +52,10 @@ public class ArtistaAdapter extends FirestoreRecyclerAdapter<Artista, ArtistaAda
     @NonNull
     @Override
     public ArtistaHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View vista = LayoutInflater.from(parent.getContext()).inflate(R.layout.artista_fragment,parent,false);
+        View vista = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_artista_adapter,parent,false);
         return new ArtistaHolder(vista);
     }
     public String getKey(int pos){
         return super.getSnapshots().getSnapshot(pos).getId();
     }
-
-
 }
