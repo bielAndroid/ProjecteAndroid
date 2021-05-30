@@ -58,4 +58,8 @@ public class ArtistaAdapter extends FirestoreRecyclerAdapter<Artista, ArtistaAda
     public String getKey(int pos){
         return super.getSnapshots().getSnapshot(pos).getId();
     }
+
+    public interface OnArtistaListener{
+        void onArtistaClick(int position);
+    }
 }

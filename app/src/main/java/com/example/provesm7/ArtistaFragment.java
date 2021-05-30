@@ -1,6 +1,7 @@
 package com.example.provesm7;
 
 import android.appwidget.AppWidgetHostView;
+import android.content.Intent;
 import android.location.LocationListener;
 import android.os.Bundle;
 import android.os.PersistableBundle;
@@ -21,7 +22,7 @@ import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
-public class ArtistaFragment extends Fragment {
+public class ArtistaFragment extends Fragment implements ArtistaAdapter.OnArtistaListener {
 
     RecyclerView rvArtista;
     RecyclerView.LayoutManager artistesLayout;
@@ -54,5 +55,11 @@ public class ArtistaFragment extends Fragment {
             rvArtista.setAdapter(artistaAdapter);
             artistaAdapter.startListening();
         return root;
+    }
+
+    @Override
+    public void onArtistaClick(int position) {
+        Intent intent = new Intent(getActivity(), ArtistaDetall.class);
+        startActivity(intent);
     }
 }
