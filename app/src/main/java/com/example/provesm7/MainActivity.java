@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_layout, new FundacioFragment()).commit();
-        // Linea per afegir registres a la base de dades     startActivity(new Intent(this,DBActivity.class));
+        // Linea per afegir registres a la base de dades startActivity(new Intent(this,DBActivity.class));
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =

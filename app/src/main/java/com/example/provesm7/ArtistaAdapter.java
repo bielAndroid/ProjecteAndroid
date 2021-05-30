@@ -1,5 +1,6 @@
 package com.example.provesm7;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Log;
@@ -38,15 +39,19 @@ public class ArtistaAdapter extends FirestoreRecyclerAdapter<Artista, ArtistaAda
     }
     @Override
     protected void onBindViewHolder(@NonNull ArtistaAdapter.ArtistaHolder holder, int position, @NonNull Artista model) {
-        if(holder.nomArtista == null){
-            Log.d("NULL","ES NULL");
-        }
-        else {
             holder.nomArtista.setText(model.getNom());
-            holder.linksEscultures.setText("Sisif");
+            holder.linksEscultures.setText("sisif");
             Bitmap bitmap = BitmapFactory.decodeByteArray(model.getFotografia().toBytes(), 0, model.getFotografia().toBytes().length);
             holder.imatgeArtista.setImageBitmap(bitmap);
-        }
+
+            holder.imatgeArtista.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(holder.itemView.getContext(),ArtistaDetall.class);
+                    intent.putExtra("As",model.getNom());
+                    holder.itemView.getContext().startActivity(intent);
+                }
+            });
     }
 
     @NonNull

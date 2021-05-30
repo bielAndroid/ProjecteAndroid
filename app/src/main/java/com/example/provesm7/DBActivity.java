@@ -36,10 +36,10 @@ public class DBActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
-                    int mida = (int) DBActivity.this.getAssets().openFd("onades.png").getLength();
+                    int mida = (int) DBActivity.this.getAssets().openFd("cesar.png").getLength();
                     byte[] buffer = new byte[mida];
 
-                    InputStream is = DBActivity.this.getAssets().open("onades.png");
+                    InputStream is = DBActivity.this.getAssets().open("cesar.png");
 
 
                     int midaAudio = (int) DBActivity.this.getAssets().openFd("audiosisif.mp3").getLength();
@@ -51,19 +51,17 @@ public class DBActivity extends AppCompatActivity {
                     is.read(buffer);
                     is.close();
 
-                    Escultura onades = new Escultura("Ballant amb les onades", "Material: Pedra d'Ulldecona\n" +
-                            "Alçada: 280 cm / Amplada 140 cm.\n" +
-                            "Pes: 7.500 kg.\n", "Any: 1975",Blob.fromBytes(buffer),Blob.fromBytes(bufferAudio));
-//                    Artista joan = new Artista("Joan", "Serafini", "Masdeu", "1931", "2017", Blob.fromBytes(buffer), Blob.fromBytes(buffer), "Nascut a Valls (l’Alt Camp) el 1931, prengué contacte amb l’escultura a les\n" +
-//                            "classes d’art de l’Escola del Treball de la seva vila natal; després d’uns primers anys de cursar dibuix, pintura i escultura amb professors locals, els\n" +
-//                            "primers aprenentatges en l’escultura li arribaren de les mans del mestre\n" +
-//                            "escultor Josep Busquets, al costat del qual treballà durant 7 anys en la restauració del retaule major de Sant Joan de Valls, època en què s’integrà en\n" +
-//                            "el grup Un nus, format per escultors de l’Alt Camp.\n" +
-//                            "Participà en nombroses exposicions, fins que l’any 1954 es traslladà a Barcelona, sempre sota l’empara del seu mestre, i completà la seva formació\n" +
-//                            "artística en el Cercle Artístic de Sant Lluc. Morí a Valls el 2017.");
-                    db.collection("escultures").
-                            document("133").
-                            set(onades).
+                    Escultura onades = new Escultura("Sisif", "Material: Pedra calissa de ColmenarAlçada: 180 cm / Amplada 190 cm.Pes: 8.000 kg.", "Any: 1975",Blob.fromBytes(buffer),Blob.fromBytes(bufferAudio));
+                   Artista joan = new Artista("Cèsar", "García", "Montaña", "1928", "2000", Blob.fromBytes(buffer), Blob.fromBytes(buffer), "Nascut a el 1928 a Vegadeo (Astúries)Va estudiar a la Escuela Superior de Bellas Artes " +
+                           "de Madrid.Posteriorment, va residir a Itàlia, des d’on, enconstant formació, va fer viatges " +
+                           "d’estudis peraquell país, Grècia, França, Bèlgica, Holanda,Alemanya, Àustria i Anglaterra.Va " +
+                           "guanyar nombrosos premis i guardons i hafet exposicions, individuals i col·lectives arreudel món." +
+                           "A partir del 1960 passà a viure a Madrid, oninstal·là el seu taller, i on morí l’any 2000." +
+                           "\n--------------------------------------------\n" +
+                           "És un escultor d’arrels classicitzants, però queamb el pas del temps ha anat evolucionant, através de l’experimentació en materials,formats i volums, cap a l’abstracció, desdibuixant les formes fins a fer-les de vegades difícils de reconèixer-les.Ha treballat principalment amb la pedra i elmetall, sobretot bronze.");
+                    db.collection("artistes").
+                            document("Cèsar").
+                            set(joan).
                             addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void v) {
@@ -80,20 +78,5 @@ public class DBActivity extends AppCompatActivity {
 
 
     }
-    public void ConsultarArtistes(){
-        db.collection("artistes")
-                .document("")
-                .get()
-                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                    @Override
-                    public void onSuccess(DocumentSnapshot documentSnapshot) {
-                        if(documentSnapshot.exists()) {
-                            Artista artistaActual = documentSnapshot.toObject(Artista.class);
-                            Toast.makeText(DBActivity.this, "Objecte rebut: " + artistaActual.getNom(), Toast.LENGTH_LONG).show();
-                        }
-                    }
-                });
 
-
-    }
 }

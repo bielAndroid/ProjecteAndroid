@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -41,6 +42,15 @@ public class EsculturaAdapter extends FirestoreRecyclerAdapter<Escultura, Escult
         holder.nomEscultura.setText(model.getNom());
         Bitmap bitmap = BitmapFactory.decodeByteArray(model.getFotografia().toBytes(), 0, model.getFotografia().toBytes().length);
         holder.fotoEscultura.setImageBitmap(bitmap);
+
+        holder.fotoEscultura.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(holder.itemView.getContext(),EsculturaDetall.class);
+                intent.putExtra("Es",model.getNom());
+                holder.itemView.getContext().startActivity(intent);
+            }
+        });
     }
 
     @NonNull
